@@ -26,5 +26,29 @@ Vue.use(Vuex);
       });
       return saleProducts;
     }
+  },
+  mutations: {
+    reducePrice: (state, payload) => {
+      state.products.forEach(product => {
+        product.price -= payload;
+      })
+    },
+    addPrice: (state, payload) => {
+      state.products.forEach(product =>{
+        product.price += payload;
+      })
+    }
+  },
+  actions: {
+    reducePrice: (context, payload)=>{
+      setTimeout(function(){
+        context.commit('reducePrice', payload)
+      }, 2000);
+    },
+    addPrice: (context, payload)=>{
+      setTimeout(function(){
+        context.commit('addPrice', payload)
+      },2000);
+    }
   }
 })

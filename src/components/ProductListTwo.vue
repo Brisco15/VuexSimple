@@ -7,21 +7,28 @@
         <span class="price"> ${{product.price}}</span>
       </li>
     </ul>
+    <button v-on:click="addPrice(10)">Add Price</button>
    
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
   computed: {
     products(){
       return this.$store.state.products;
     },
-    saleProducts(){
-      return this.$store.getters.saleProducts;
-
-    }
+    ...mapGetters([
+      'saleProducts'
+      ])
+  },
+  methods: {
+    ...mapActions([
+      'addPrice'
+      ])
   }
 }
 </script>
